@@ -6,7 +6,7 @@ helptext_log_dislog = ('Функция dislog.\n'
                        'dislog(webhookurl, message, debug)\n'
                        'webhookurl - ссылка вебхука дискорд\n'
                        'message - сообщение, соответсвтенно\n'
-                       'debug - True, если нужно сообщение о том, что запрос отправлен. (не обязательный)\n'
+                       'debug - True - покажет сообщение (не обязательный)\n'
                        'Использование - dislog(\'https://discord.com/...\', \'by mav\')')
 
 helptext_log_vklog = ("Функция vklog.\n"
@@ -14,7 +14,7 @@ helptext_log_vklog = ("Функция vklog.\n"
                       "token - токен группы\n"
                       "chatid - айди чата. ЦИФРЫ БЕЗ КАВЫЧЕК, ТОЛЬКО INT\n"
                       "message - сообщение, соответсвтенно\n"
-                      "debug - True, если нужно сообщение о том, что запрос отправлен. (не обязательный)\n"
+                      "debug - True - покажет сообщение (не обязательный)\n"
                       "Использование - vklog('токен', 2, 'by mav')")
 
 helptext_log_getvkchatids = ("Функция getvkchatids.\n"
@@ -26,7 +26,7 @@ helptext_log_getvkchatids = ("Функция getvkchatids.\n"
 class Log():
     def dislog(whurl = None, content = None, debug = False):
         if debug:
-            print()
+            print(helptext_log_dislog)
 
         if whurl == None:
             print('Не заполнено поле URL вебхука')
@@ -44,22 +44,18 @@ class Log():
             except Exception as e:
                 print(e)
 
-            if debug:
-                print('Post send')
-
         else:
             print('Неопознанная ошибка.')
 
     def vklog(token = None, chatid = None, message = None, debug = False):
+        if debug:
+            print(helptext_log_vklog)
         try:
             chatid = int(chatid)
         except:
             print('chatid должен содержать только цифры')
 
-        if debug:
-            print(helptext_log_vklog)
-
-        elif token == None:
+        if token == None:
             print('Не указан токен')
 
         elif chatid == None:
@@ -79,7 +75,9 @@ class Log():
         else:
             print('Неопознанная ошибка.')
 
-    def getvkchatids(token = None, num = 10):
+    def getvkchatids(token = None, num = 10, debug = False):
+        if debug:
+            print(helptext_log_getvkchatids)
         if token == None:
             print('Не указан токен')
         else:
