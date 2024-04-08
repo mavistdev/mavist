@@ -83,17 +83,14 @@ class Log():
         else:
             try:
                 for chatid in range(1, num):
-                    if chatid == 2:
-                        pass
-                    else:
-                        try:
+                      try:
 
-                            a = requests.get(
-                                f'https://api.vk.com/method/messages.send?v=5.103&access_token={token}&chat_id={chatid}&message=это просто проверка&random_id=0')
-                            print(f'{chatid} - {a}')
-                            time.sleep(5)
-                        except Exception as e:
-                            print(e)
+                          a = requests.get(
+                              f'https://api.vk.com/method/messages.send?v=5.103&access_token={token}&chat_id={chatid}&message=это просто проверка&random_id=0')
+                          print(f'{chatid} - {a}')
+                          time.sleep(5)
+                      except Exception as e:
+                          print(e)
 
                     if num == chatid:
                         break
